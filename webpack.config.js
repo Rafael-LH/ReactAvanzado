@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -8,13 +9,16 @@ module.exports = {
     port: 3000
   },
   resolve: {
-    extensions: ['.js', '.js']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      '@api': path.resolve(__dirname, './api')
+    }
   },
   module: {
     rules: [
       {
-        exclude: /(node_modules)/,
-        test: /\.js|jsx$/,
+        exclude: /(node_modules|bower_components)/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader'
       },
 

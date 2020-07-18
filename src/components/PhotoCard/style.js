@@ -16,13 +16,15 @@ export const ImgWrapper = styled.figure`
   width: 100%;
 `
 export const Img = styled.img`
-  ${fadeIn()}
   box-shadow: 0 10px rgba(0, 0, 0, .2);
   height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
   width: 100%;
+  &.show-fadein{
+    ${fadeIn()}
+  }
 `
 export const Button = styled.button`
   padding-top: 8px;

@@ -13,7 +13,7 @@ export const ListOfCategories = () => {
     fetch('https://petgram-server-iskoat.rafael-lh.vercel.app/categories')
       .then(result => result.json())
       .then(setCategories)
-  }, []) // dependencia
+  }, []) // dependencia de nuestro efecto
 
   useEffect(() => { // efecto
     const onScroll = (e) => {
@@ -29,7 +29,7 @@ export const ListOfCategories = () => {
     return () => document.removeEventListener('scroll', onScroll)
     // de esta manera estamos limpiando nuestro document de l evento scroll
 
-  }, [showFixed]) // dependencia
+  }, [showFixed]) // dependencia de nuestro efecto
 
   const renderList = (fixed) => (
     <List className={fixed ? 'fixed' : ''}>

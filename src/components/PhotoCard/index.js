@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Article, ImgWrapper, Img, Button } from './style'
 import { MdFavoriteBorder } from 'react-icons/md'
+import { useNearScreen } from '../../hooks/useNearScreen'
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_dogs.jpg'
 export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
@@ -14,22 +15,12 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       (showFadeIn !== isFadeIn) && setShowFadeIn(isFadeIn)
     }
     document.addEventListener('scroll', onFadeIn);
-
     return () => document.removeEventListener('scroll', onFadeIn)
-
   }, [showFadeIn])
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const { isIntersecting } = entries[0];
-      if (isIntersecting) {
-        setShow(true)
-        // desconectamos el observador porque solo lo queremos escuchar una vez
-        observer.disconnect();
-      }
-    })
-    observer.observe(element.current)
-  }, [element]) // dependencia de nuestr efecto
+    useNearScreen(element, setShow)
+  }, [element])
 
   return (
     <Article ref={element} >

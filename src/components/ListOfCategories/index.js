@@ -11,7 +11,9 @@ function useCategoriesData() {
     fetch('https://petgram-server-iskoat.rafael-lh.vercel.app/categories')
       .then(result => result.json())
       .then(setCategories)
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000)
   }, []) // dependencia de nuestro efecto
 
   return { categories, loading }

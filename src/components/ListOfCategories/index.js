@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
+import { Loader } from '../Loader'
+
+function useCategoriesData() {
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
+  useEffect(() => { // efecto
+    setLoading(true);
+    fetch('https://petgram-server-iskoat.rafael-lh.vercel.app/categories')
+      .then(result => result.json())
+      .then(setCategories)
+    setLoading(false);
+  }, []) // dependencia de nuestro efecto
+
+  return { categories, loading }
+}
 
 export const ListOfCategories = () => {
-  const [categories, setCategories] = useState([])
   const [showFixed, setShowFixed] = useState(false)
+  const { categories, loading } = useCategoriesData();
 
   /**
    * Effects
    */
-  useEffect(() => { // efecto
-    fetch('https://petgram-server-iskoat.rafael-lh.vercel.app/categories')
-      .then(result => result.json())
-      .then(setCategories)
-  }, []) // dependencia de nuestro efecto
-
   useEffect(() => { // efecto
     const onScroll = (e) => {
       // aqui es donde voy a estar cambiando el estado de showFixed de true o false
@@ -32,13 +41,16 @@ export const ListOfCategories = () => {
   }, [showFixed]) // dependencia de nuestro efecto
 
   const renderList = (fixed) => (
-    <List className={fixed ? 'fixed' : ''}>
-      {
-        categories.map(item => <Item key={item.id}><Category {...item} /></Item>)
-      }
-    </List>
+    (loading)
+      ?
+      <Loader />
+      :
+      <List fixed={fixed}>
+        {
+          categories.map(item => <Item key={item.id}><Category {...item} /></Item>)
+        }
+      </List>
   )
-
   return (
     <>
       {renderList()}

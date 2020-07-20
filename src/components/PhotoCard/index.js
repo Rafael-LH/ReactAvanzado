@@ -9,7 +9,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   useEffect(() => {
     const onFadeIn = (_) => {
       const isFadeIn = window.scrollY > 200;
-      console.log(isFadeIn);
       (showFadeIn !== isFadeIn) && setShowFadeIn(isFadeIn)
     }
     document.addEventListener('scroll', onFadeIn);
@@ -22,7 +21,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     <ElemmentArticle>
       <a href={`/detail/${id}`}>
         <ImgWrapper>
-          <Img src={src} alt='Image' className={showFadeIn ? 'show-fadein' : ''} />
+          <Img src={src} alt='Image' showFadeIn={showFadeIn} />
         </ImgWrapper>
       </a>
 

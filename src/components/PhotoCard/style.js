@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { fadeIn } from '../../styles/animation'
 
 // styles 
@@ -22,8 +22,10 @@ export const Img = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
-  &.show-fadein{
+  /* funcion que recibe una prop de showFadeIn la cual es mandada desde mi componente PhotoCard */
+  ${props => props.showFadeIn && css`
     ${fadeIn()}
+  `
   }
 `
 export const Button = styled.button`

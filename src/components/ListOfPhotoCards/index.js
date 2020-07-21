@@ -1,12 +1,34 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard'
+import { graphql } from 'react-apollo'
+import { gql } from 'apollo-boost'
 
-export const ListOfPhotoCards = () => {
+const withPhotos = graphql(gql`
+  query getPhotos{
+    photos {
+      id,
+      categoryId,
+      src,
+      likes,
+      userId,
+      liked
+    }
+  }
+`)
+
+/**
+ * Lo que estamos haciendo aqui es recibir por props el resultado de la query con graphql el cual es un objeto que tine la key data
+ * dentro de el tiene photos que lo iniciaremos en un array vacío que por defecto todo sera un objeto vacío
+ */
+const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => {
+  // console.log(photos)
   return (
     <ul>
       {
-        [1, 2, 3, 4, 5, 6, 7].map(id => <PhotoCard key={id} id={id} />)
+        photos.map(item => <PhotoCard key={item.id} {...item} />)
       }
     </ul>
   )
 }
+
+export const ListOfPhotoCards = withPhotos(ListOfPhotoCardsComponent)

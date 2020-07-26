@@ -1,23 +1,11 @@
 import React from 'react'
 import { PhotoCard } from '../components/PhotoCard'
-import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
-
-const query = gql`
-  query getSinglePhoto($id: ID!){
-    photo(id: $id){
-      id
-      categoryId
-      src
-      likes
-      userId
-      liked
-    }
-  }
-`
+import { queryPhoto } from '../hoc/getSinglePhoto'
+import { LoaderSpinner } from '../components/LoaderSpinner'
 
 export const PhotoCardWithQuery = ({ id }) => (
-  <Query query={query} variables={{ id }}>
+  <Query query={queryPhoto} variables={{ id }}>
     {
       /* la destructuraciond de data contiene una key photo la cual inicializaremos en [] y el objeto de data lo inicializaremos en {} */
       ({ loading, error, data: { photo = [] } = {} }) => {
@@ -27,7 +15,9 @@ export const PhotoCardWithQuery = ({ id }) => (
          * ya que estara cargando la información una vez que esta información ha sido cargada loading cambiara a false
          */
         /* const { photo = {} } = (!loading) && data */
-        return !loading && <PhotoCard {...photo} />
+        if (loading) return <LoaderSpinner />
+        if (error) return <p>Error...</p>
+        return <PhotoCard {...photo} />
       }
     }
   </Query>

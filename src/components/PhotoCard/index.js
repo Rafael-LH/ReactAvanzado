@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Article, ImgWrapper, Img, Button } from './style'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { Article, ImgWrapper, Img } from './style'
+import { FavButton } from '../FavButton'
+import { ToggleLikeMutation } from '../../container/ToggleLikeMutation'
+
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 
@@ -11,7 +13,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   const [show, element] = useNearScreen();
   const key = `like-${id}`
   const [liked, setLiked] = useLocalStorage(key, false)
-  
 
   useEffect(() => {
     const onFadeIn = (_) => {
@@ -21,8 +22,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     document.addEventListener('scroll', onFadeIn);
     return () => document.removeEventListener('scroll', onFadeIn)
   }, [showFadeIn])
-
-  const Icon = liked ? MdFavorite : MdFavoriteBorder;
 
   return (
     <Article ref={element} >
@@ -34,9 +33,26 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
                 <Img src={src} alt='Image' showFadeIn={showFadeIn} />
               </ImgWrapper>
             </a>
-            <Button onClick={() => setLiked(!liked)}>
-              <Icon size='32px' /> {likes} Likes!
-            </Button>
+            <ToggleLikeMutation>
+              {/* Las render props necesitan de una funcion que le diga lo que tiene que renderizar */}
+              {
+                (togglelike) => {
+                  const handleFavClick = () => {
+                    (!liked) && togglelike({
+                      variables: {
+                        input: {
+                          id
+                        }
+                      }
+                    })
+                    setLiked(!liked)
+                  }
+                  return (
+                    <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
+                  )
+                }
+              }
+            </ToggleLikeMutation>
           </>
         )
       }

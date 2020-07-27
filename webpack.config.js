@@ -3,10 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   output: {
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/'
   },
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],

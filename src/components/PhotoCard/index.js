@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from '@reach/router'
 import { Article, ImgWrapper, Img } from './style'
 import { FavButton } from '../FavButton'
 import { ToggleLikeMutation } from '../../container/ToggleLikeMutation'
@@ -28,11 +29,11 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       {
         show && (
           <>
-            <a href={`/?detail=${id}`}>
+            <Link to={`/detail/${id}`}>
               <ImgWrapper>
                 <Img src={src} alt='Image' showFadeIn={showFadeIn} />
               </ImgWrapper>
-            </a>
+            </Link>
             <ToggleLikeMutation>
               {/* Las render props necesitan de una funcion que le diga lo que tiene que renderizar */}
               {

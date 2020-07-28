@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link as LinkRouter } from '@reach/router'
+import { fadeIn } from '../../styles/animation'
 
 export const Nav = styled.nav`
   position: fixed;
@@ -29,4 +30,23 @@ export const Link = styled(LinkRouter)`
   width: 100%;
   justify-content: center;
   text-decoration: none;
+  
+  &[aria-current]{
+    color: #000;
+
+    &::after{
+      ${fadeIn({ time: '0.5s' })}
+      content: '.';
+      position: absolute;
+      margin-bottom: 8px;
+      bottom: 0;
+      font-size: 34px;
+      line-height: 20px;
+    }
+  }
 `
+
+// reach-router cuando hacemos click en una ruta lo que hace es marcar esa ruta con un atributo llamado 
+// aria-current el cual podemos acceder a el mediante [] y dentro el atributo aria-current de reach-router
+
+//after es un pseudo elemento que esta despues del elemento

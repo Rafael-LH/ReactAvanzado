@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Form, H2, Input, Button } from './styles'
 
-export const UserForm = ({ onSubmit }) => {
+export const UserForm = ({ title, onSubmit }) => {
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -12,10 +13,11 @@ export const UserForm = ({ onSubmit }) => {
     })
   }
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name='email' placeholder='Email' onChange={handleChange} />
-      <input type="password" name='password' placeholder='Password' onChange={handleChange} />
-      <button type='submit'>Iniciar sesión</button>
-    </form>
+    <Form onSubmit={onSubmit}>
+      <H2>{title}</H2>
+      <Input type="text" name='email' placeholder='Email' onChange={handleChange} />
+      <Input type="password" name='password' placeholder='Password' onChange={handleChange} />
+      <Button type='submit'>{title}</Button>
+    </Form>
   )
 }

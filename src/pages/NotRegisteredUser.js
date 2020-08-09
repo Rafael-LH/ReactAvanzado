@@ -6,8 +6,11 @@ export const NotRegisteredUser = () => (
   <Context.Consumer>
     {
       ({ activeAuth }) => (
-        <UserForm onSubmit={activeAuth} />
+        <>
+          <UserForm title='Registrarse' onSubmit={activeAuth} />
+          <UserForm title='Iniciar Sesión' onSubmit={activeAuth} />
+        </>
       )
     }
-  </Context.Consumer>
+  </Context.Consumer >
 )

@@ -7,7 +7,8 @@ const Provider = ({ children }) => {
 
   const value = {
     isAuth,
-    activeAuth: () => {
+    activeAuth: (e) => {
+      e.preventDefault()
       setIsAuth(true)
     }
   }

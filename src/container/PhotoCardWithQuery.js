@@ -1,6 +1,6 @@
 import React from 'react'
 import { PhotoCard } from '../components/PhotoCard'
-import { Query } from 'react-apollo'
+import { Query } from 'react-apollo' // React Apollo es un cliente que nos va a permitir conectarnos a un servidor GraphQL
 import { queryPhoto } from '../hoc/getSinglePhoto'
 import { LoaderSpinner } from '../components/LoaderSpinner'
 

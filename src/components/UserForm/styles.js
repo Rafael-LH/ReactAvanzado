@@ -25,4 +25,8 @@ export const Button = styled.button`
   display: block;
   width: 100%;
   text-align: center;
+  &[disabled] {
+    opacity: .7;
+    cursor: wait;
+  }
 `

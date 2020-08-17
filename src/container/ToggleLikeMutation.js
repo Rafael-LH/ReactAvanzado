@@ -3,8 +3,8 @@ import { gql } from 'apollo-boost' // GraphQL es un lenguaje creado por Facebook
 import { Mutation } from 'react-apollo' // React Apollo es un cliente que nos va a permitir conectarnos a un servidor GraphQL
 
 const LIKE_PHOTO = gql`
-  mutation likeAnonymousPhoto($input: LikePhoto!){
-    likeAnonymousPhoto(input: $input ){
+  mutation likePhoto($input: LikePhoto!){
+    likePhoto(input: $input ){
       id,
       liked,
       likes

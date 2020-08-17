@@ -5,15 +5,12 @@ import { FavButton } from '../FavButton'
 import { ToggleLikeMutation } from '../../container/ToggleLikeMutation'
 
 import { useNearScreen } from '../../hooks/useNearScreen'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_dogs.jpg'
 
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
+export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
   const [showFadeIn, setShowFadeIn] = useState(false);
   const [show, element] = useNearScreen();
-  const key = `like-${id}`
-  const [liked, setLiked] = useLocalStorage(key, false)
 
   useEffect(() => {
     const onFadeIn = (_) => {
@@ -39,14 +36,13 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
               {
                 (togglelike) => {
                   const handleFavClick = () => {
-                    (!liked) && togglelike({
+                    togglelike({
                       variables: {
                         input: {
                           id
                         }
                       }
                     })
-                    setLiked(!liked)
                   }
                   return (
                     <FavButton liked={liked} likes={likes} onClick={handleFavClick} />

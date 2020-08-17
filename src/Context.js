@@ -1,14 +1,18 @@
 import React, { createContext, useState } from 'react'
 
-const Context = createContext()
+export const Context = createContext()
 
 const Provider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false)
-
+  // esto hace hace en una funcion ya que el window.sessionStorage es sincrono de manera que bloquea el hilo principal 
+  // entonces ya con una funcion esto se convierte en asincrono
+  const [isAuth, setIsAuth] = useState(() => {
+    return window.sessionStorage.getItem('token')
+  })
   const value = {
     isAuth,
-    activeAuth: () => {
+    activeAuth: token => {
       setIsAuth(true)
+      window.sessionStorage.setItem('token', token)
     }
   }
   return (

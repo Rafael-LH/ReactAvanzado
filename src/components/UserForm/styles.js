@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-  padding: 16px 0;
+  padding: 16px 10px;
 `
 export const H2 = styled.h2`
   font-size: 16px;

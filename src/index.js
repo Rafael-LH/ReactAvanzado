@@ -19,7 +19,7 @@ const client = new ApolloClient({
   onError: error => {
     const { networkError } = error;
     if (networkError && networkError.result.code === 'invalid_token') {
-      window.sessionStorage.removeItem('toke')
+      window.sessionStorage.removeItem('token')
       window.location.href = '/'
     }
   }

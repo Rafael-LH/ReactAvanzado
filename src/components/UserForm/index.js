@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, H2, Input, Button } from './styles'
 import { ErrorMessage } from '../ErrorMessage'
+import { SubmitButton } from '../SubmitButton'
 
 export const UserForm = ({ title, onSubmit, errorMessage, disabled }) => {
   const [form, setForm] = useState({
@@ -23,7 +24,9 @@ export const UserForm = ({ title, onSubmit, errorMessage, disabled }) => {
         <H2>{title}</H2>
         <Input type="text" name='email' placeholder='Email' onChange={handleChange} disabled={disabled} />
         <Input type="password" name='password' placeholder='Password' onChange={handleChange} disabled={disabled} />
-        <Button type='submit' disabled={disabled}>{title}</Button>
+        <SubmitButton disabled={disabled}>
+          {title}
+        </SubmitButton>
       </Form>
       {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </>

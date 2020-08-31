@@ -4,7 +4,7 @@ import { SubmitButton } from '../components/SubmitButton'
 
 export const User = () => {
   const { removeAuth, disabled } = useContext(Context)
-  console.log(disabled)
+  // console.log(disabled)
   return (
     <>
       <h1>User</h1>

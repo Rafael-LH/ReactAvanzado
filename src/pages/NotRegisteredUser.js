@@ -4,7 +4,7 @@ import { UserForm } from '../components/UserForm'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 
-export const NotRegisteredUser = () => {
+const NotRegisteredUser = () => {
   // de esta manera nos podremos traer el consumer sin necesidad de insertarlo directo en el html
   // con Context.consumer nos ahorramos esa parte y queda un codigo mas limpio
   const { activeAuth } = useContext(Context) // al useContext le debemos pasar el contexto para que de desta manera poder utilizar el consumer
@@ -57,3 +57,4 @@ export const NotRegisteredUser = () => {
     </>
   )
 }
+export default NotRegisteredUser

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Context } from '../Context'
 import { SubmitButton } from '../components/SubmitButton'
 
-export const User = () => {
+const User = () => {
   const { removeAuth, disabled } = useContext(Context)
   // console.log(disabled)
   return (
@@ -14,3 +14,4 @@ export const User = () => {
     </>
   )
 }
+export default User

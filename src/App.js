@@ -1,20 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 import { Router, Redirect } from '@reach/router'
 import { GlobalStyle } from './styles/GlobalStyle'
 import { Logo } from './components/Logo'
 import { NavBar } from './components/NavBar'
-import { Home } from './pages/Home'
-import { Detail } from './pages/Detail'
-import { Favs } from './pages/Favs'
-import { User } from './pages/User'
-import { NotFound } from './pages/NotFound'
-import { NotRegisteredUser } from './pages/NotRegisteredUser'
 import { Context } from './Context'
+
+// import dinamico solo para mostrar el componente Favs si esta siendo interception observer en el screen del browser
+// para que un import dinamico funcione el componente el cual se esta llamando dinamicamente se debe de exportar por defecto
+// y no debe de exportarse nombrado 
+
+const Favs = React.lazy(() => import('./pages/Favs'))
+const Home = React.lazy(() => import('./pages/Home'))
+const User = React.lazy(() => import('./pages/User'))
+const Detail = React.lazy(() => import('./pages/Detail'))
+const NotFound = React.lazy(() => import('./pages/NotFound'))
+const NotRegisteredUser = React.lazy(() => import('./pages/NotRegisteredUser'))
 
 export const App = () => {
   const { isAuth } = useContext(Context);
   return (
-    <>
+    // React Suspense recibe un valor por defecto fallback el cual le tenemos que indicar que rendeara 
+    // en lo que el componente esta suspendido, este caso solo rendereamos un div vacio
+    <Suspense fallback={<></>}>
       <GlobalStyle />
       <Logo />
       <Router>
@@ -31,6 +38,6 @@ export const App = () => {
         <User path='/user' />
       </Router>
       <NavBar />
-    </>
+    </Suspense>
   )
 }

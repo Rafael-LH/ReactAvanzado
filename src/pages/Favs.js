@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout'
 
 export const Favs = () => (
   <>
-    <Layout title="Petgram - tus favoritos" subtitle="Aqui puedes encontrar tus favoritos">
+    <Layout title="Petgram - tus favoritos" subtitle="Aquí puedes encontrar tus favoritos">
       <FavsWithQuery />
     </Layout>
   </>

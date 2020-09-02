@@ -17,7 +17,7 @@ function useCategoriesData() {
   return { categories, loading }
 }
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
   const [showFixed, setShowFixed] = useState(false)
   const { categories, loading } = useCategoriesData();
 
@@ -58,3 +58,5 @@ export const ListOfCategories = () => {
     </>
   )
 }
+// Con react memo lo que hacemos es evitar re renderizados si las props que recibe el componente no son distintas
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)

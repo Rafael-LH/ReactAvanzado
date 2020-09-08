@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>React avanzado</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="apple-touch-icon" href="assets/icon.png">
 </head>
 
 <body>
@@ -14,6 +15,16 @@
   <noscript>
     <h3>Esta App necesita javascrip para anunciar</h3>
   </noscript>
+  <script>
+    // primero vemos si nuestro navegador es compatible con los service worker 
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => console.log('SW register'))
+          .catch(registrationError => console.log("SW Error", registrationError))
+      })
+    }
+  </script>
 </body>
 
 </html>

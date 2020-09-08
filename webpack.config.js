@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackPwaManifestPlugin =  require('webpack-pwa-manifest')
+const WebpackPwaManifestPlugin = require('webpack-pwa-manifest')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
   output: {
@@ -42,10 +43,32 @@ module.exports = {
       description: 'Fotos de animalitos bonitos',
       background_color: '#fff',
       theme_color: '#b1a',
-      icons:[
+      icons: [
         {
           src: path.resolve('src/assets/icon.png'),
-          sizes: [96, 128, 192, 256, 384, 512]
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('icons'),
+          purpose: "any maskable",
+          ios: true,
+        }
+      ]
+    }),
+    // nos permite generar un service worker para nuestra aplicacion
+    new WorkboxWebpackPlugin.GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('https://(res.cloudinary.com|images.unsplash.com)'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images'
+          }
+        },
+        {
+          urlPattern: new RegExp('https://petgram-server-iskoat.rafael-lh.vercel.app'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api'
+          }
         }
       ]
     })

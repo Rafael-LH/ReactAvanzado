@@ -9,7 +9,8 @@
     "lint": "standard",
     "lint:fix": "standard --fix",
     "dev": "webpack-dev-server",
-    "serve:dev": "webpack --mode 'development' && npx serve dist -s"
+    "serve:dev": "webpack --mode 'development' && npx serve dist -s",
+    "test": "cypress open"
   },
   "author": "Rafael Lopez",
   "repository": {
@@ -38,6 +39,7 @@
     "@babel/preset-react": "^7.10.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.1.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "standard": "^14.3.4",

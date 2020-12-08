@@ -1,6 +1,0 @@
-{
-  "baseUrl": "https://petgram.rafael-lh.vercel.app",
-  "chromeWebSecurity": false,
-  "viewportWidth": 500,
-  "viewportHeight": 800
-}

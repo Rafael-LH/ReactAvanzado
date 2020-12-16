@@ -9,9 +9,15 @@ module.exports = (_, argv) => {
       filename: 'bundle.js',
       publicPath: '/'
     },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      alias: {
+        '@components': path.resolve(__dirname, './src/Components')
+      }
+    },
     devtool: argv.mode === 'development' ? 'source-map' : '',
     devServer: {
-      port: 9000,
+      port: 3000,
       historyApiFallback: true
     },
     module: {

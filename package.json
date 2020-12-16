@@ -4,9 +4,9 @@
   "description": "Webpack, ReactJS",
   "main": "webpack.config.js",
   "scripts": {
-    "vercel-build": "npm run build",
+    "vercel:build": "npm run build",
     "build": "webpack -w --mode production ",
-    "dev": "webpack-dev-server  --mode development",
+    "develop": "webpack-dev-server  --mode development",
     "lint": "standard",
     "lint-fix": "standard --fix"
   },
@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

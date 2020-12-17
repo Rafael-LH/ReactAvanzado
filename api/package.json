@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "now -t <tu-token>",
     "start:api": "NODE_ENV=production node index.js",
-    "dev:api": "nodemon index.js --ignore db.json",
+    "dev:api": "nodemon index.js --ignore db.json"
   },
   "author": "",
   "license": "ISC",

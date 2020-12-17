@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export const useGetCategories = (setLoader) => {
+export const useGetCategories = () => {
   const [categories, setCategories] = useState([])
+  const [laoder, setLoader] = useState(false)
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -14,5 +15,5 @@ export const useGetCategories = (setLoader) => {
     fetchCategories()
   }, [])
 
-  return { categories, setCategories }
+  return { categories, setLoader, laoder }
 }

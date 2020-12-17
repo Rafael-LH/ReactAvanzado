@@ -5,14 +5,15 @@ import { List, Item } from './styles'
 // import { categories as mockCategories } from '../../../api/db.json'
 
 export const ListOfCategories = () => {
-  const [laoder, setLoader] = useState(false)
   const [showFixed, setShowFixed] = useState(false)
-  const { categories } = useGetCategories(setLoader)
+  const { categories, laoder } = useGetCategories()
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
       {
-        categories.map(item => <Item key={item.id} ><Category {...item} /></Item>)
+        laoder
+          ? <center><h1>Cargando...</h1></center>
+          : categories.map(item => <Item key={item.id} ><Category {...item} /></Item>)
       }
     </List>
   )
@@ -27,11 +28,9 @@ export const ListOfCategories = () => {
   }, [showFixed])
 
   return (
-    laoder
-      ? <center><h1>Cargando...</h1></center>
-      : <>
-        {renderList()}
-        {showFixed && renderList(true)}
-      </>
+    <>
+      {renderList()}
+      {showFixed && renderList(true)}
+    </>
   )
 } 

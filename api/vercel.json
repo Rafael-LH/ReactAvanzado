@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "name": "petgram-by-rafael",
+  "name": "petgram-server-iskoat",
   "alias": [
-    "petgram-by-rafael"
+    "petgram-iskoat"
   ],
   "builds": [
     {

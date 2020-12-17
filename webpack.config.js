@@ -12,7 +12,8 @@ module.exports = (_, argv) => {
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
-        '@components': path.resolve(__dirname, './src/Components')
+        '@components': path.resolve(__dirname, './src/Components'),
+        '@hooks': path.resolve(__dirname, './src/hooks')
       }
     },
     devtool: argv.mode === 'development' ? 'source-map' : '',

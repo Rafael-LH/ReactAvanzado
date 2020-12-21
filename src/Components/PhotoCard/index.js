@@ -1,18 +1,16 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { ImgWrapper, Img, Button, Article } from './styles'
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
 import { useLocalStorage } from "@hooks/useLocalStorage";
 
-const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_hamsters.jpg'
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
-  const articleRef = useRef(null)
-  const { show } = useIntersectionObserver(articleRef)
+export const PhotoCard = ({ id, likes, src }) => {
+  const { show, DOMRef } = useIntersectionObserver()
   const [liked, setLiked] = useLocalStorage(`like-${id}`, likes)
   const Icon = liked ? MdFavorite : MdFavoriteBorder
 
   return (
-    <Article ref={articleRef}>
+    <Article ref={DOMRef}>
       {
         show &&
         <>

@@ -1,0 +1,9 @@
+GraphQL(Gql) es un lenguaje de programacion creado por Facebook que
+nos permite conectarnos a un servidor de GraphQL para poder traernos 
+solo los datos que nosotros necesitamos o pedir más de un dato en 
+una sola petición
+
+GraphQL no remplaza ninguna arquitectura de SoftWare como por ejemplo 
+REST API ya que solo GraphQL nos permite traernos de nuetros end points
+los datos que necesitamos desde el cliente y poder incluso hacer queries 
+de 1 o mas end ponits en una sola petición

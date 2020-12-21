@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
-export const useIntersectionObserver = (articleRef) => {
+export const useIntersectionObserver = () => {
+  const DOMRef = useRef(null)
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -20,9 +21,9 @@ export const useIntersectionObserver = (articleRef) => {
           observer.disconnect() // lo que hacemos es desconectar el observador para que deje de observar
         }
       })
-      observer.observe(articleRef.current)
-    }, [articleRef])
+      observer.observe(DOMRef.current)
+    }, [DOMRef])
   })
 
-  return { show }
+  return { show, DOMRef }
 }

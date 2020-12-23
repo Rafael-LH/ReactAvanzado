@@ -1,9 +1,9 @@
 import React from 'react'
 import { useQuery } from '@apollo/client';
-import { withPhotos } from '@gql/whitPhotos'
+import { withPhotos } from '../gql/whitPhotos'
 
-export const hocListOfPhotoCards = (ListOfPhotoCards) => {
-  const listOfPhotoCardsNewComponent = ({ categoryId }) => {
+export const listOfPhotoCardsRP = (ListOfPhotoCards) => {
+  const ListOfPhotoCardsNewComponent = ({ categoryId }) => {
     const { loading, error, data: { photos } = [] } = useQuery(withPhotos, {
       variables: {
         categoryId: categoryId
@@ -13,5 +13,5 @@ export const hocListOfPhotoCards = (ListOfPhotoCards) => {
     if (error) return <center><h1>Ha ocurrido algun error, intenta más tarde</h1></center>
     return <ListOfPhotoCards photos={photos} />
   }
-  return listOfPhotoCardsNewComponent
+  return ListOfPhotoCardsNewComponent
 }

@@ -1,13 +1,37 @@
 import React from 'react'
-import { ImgWrapper, Img, Button, Article } from './styles'
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+// Styles
+import { ImgWrapper, Img, Article } from './styles'
+//Components
+import { FavButton } from "@components/FavButton"
+//Hooks
 import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
 import { useLocalStorage } from "@hooks/useLocalStorage";
+import { useLikePhoto } from "@hooks/useLikePhoto";
 
 export const PhotoCard = ({ id, likes, src }) => {
+  /**
+   * Hooks
+   */
+  const { likeAnonymousPhoto } = useLikePhoto()
   const { show, DOMRef } = useIntersectionObserver()
+  /**
+   * States
+   */
   const [liked, setLiked] = useLocalStorage(`like-${id}`, likes)
-  const Icon = liked ? MdFavorite : MdFavoriteBorder
+
+  /**
+   * Handles
+   */
+  const handleFavClick = () => {
+    !liked && likeAnonymousPhoto({
+      variables: {
+        input: {
+          id,
+        }
+      }
+    })
+    setLiked(!liked)
+  }
 
   return (
     <Article ref={DOMRef}>
@@ -19,9 +43,11 @@ export const PhotoCard = ({ id, likes, src }) => {
               <Img src={src} alt="image" />
             </ImgWrapper>
           </a>
-          <Button onClick={() => setLiked(!liked)}>
-            <Icon size='32px' /> {likes} likes!
-          </Button>
+          <FavButton
+            liked={liked}
+            likes={likes}
+            handleFavClick={handleFavClick}
+          />
         </>
       }
     </Article>

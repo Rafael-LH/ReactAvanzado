@@ -26,7 +26,8 @@ export const Link = styled(LinkRouter)`
   justify-content: center;
   text-decoration: none;
   width: 100%;
-  &[aria-current]{  /* atributo aria-current que lo setea reach router */
+  /* atributo aria-current que lo setea reach router cuando haces click en el elemento*/
+  &[aria-current]{  
     color: #000;
     &:after{
       ${fadeIn({ timer: '0.5s' })}

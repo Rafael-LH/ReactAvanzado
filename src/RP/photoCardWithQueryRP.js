@@ -3,10 +3,10 @@ import { useQuery } from '@apollo/client'
 import { getSinglePhoto } from "@gql/getSinglePhoto"
 
 export const photoCardWithQueryRP = (PhotoCard) => {
-  const PhotoCardWithQueryNC = ({ id }) => {
+  const PhotoCardWithQueryNC = ({ detailId }) => {
     const { loading, error, data: { photo } = [] } = useQuery(getSinglePhoto, {
       variables: {
-        id: id
+        id: detailId
       }
     })
     if (loading) return <center> <h1>Cargando...</h1> </center>

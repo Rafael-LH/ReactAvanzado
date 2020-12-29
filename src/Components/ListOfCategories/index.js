@@ -13,7 +13,11 @@ export const ListOfCategories = () => {
       {
         laoder
           ? <center><h1>Cargando...</h1></center>
-          : categories.map(item => <Item key={item.id} ><Category {...item} /></Item>)
+          : categories.map(item => (
+            <Item key={item.id} >
+              <Category {...item} path={`/pet/${item.id}`} />
+            </Item>
+          ))
       }
     </List>
   )

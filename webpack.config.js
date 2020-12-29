@@ -14,7 +14,8 @@ module.exports = (_, argv) => {
       alias: {
         '@components': path.resolve(__dirname, './src/Components'),
         '@hooks': path.resolve(__dirname, './src/hooks'),
-        '@gql': path.resolve(__dirname, './src/gql')
+        '@gql': path.resolve(__dirname, './src/gql'),
+        '@pages': path.resolve(__dirname, './src/pages')
       }
     },
     devtool: argv.mode === 'development' ? 'source-map' : '',

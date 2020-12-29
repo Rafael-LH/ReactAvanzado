@@ -1,6 +1,12 @@
 import styled from 'styled-components'
+import { Link as LinkRouter } from '@reach/router'
 
-export const Anchor = styled.a`
+/**
+ * Styled component puede recibir un parametro y ese parametro puede ser 
+ * un componente pero no cualquier componente si no un componente
+ * que pueda tener una propiedad className y Link si que puede aceptar esa prop
+ */
+export const Link = styled(LinkRouter)`
   display: flex;
   flex-direction: column;
   text-align: center;

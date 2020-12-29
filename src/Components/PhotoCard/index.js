@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from '@reach/router'
 // Styles
 import { ImgWrapper, Img, Article } from './styles'
 //Components
@@ -18,7 +19,6 @@ export const PhotoCard = ({ id, likes, src }) => {
    * States
    */
   const [liked, setLiked] = useLocalStorage(`like-${id}`, likes)
-
   /**
    * Handles
    */
@@ -38,11 +38,11 @@ export const PhotoCard = ({ id, likes, src }) => {
       {
         show &&
         <>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} alt="image" />
             </ImgWrapper>
-          </a>
+          </Link>
           <FavButton
             liked={liked}
             likes={likes}

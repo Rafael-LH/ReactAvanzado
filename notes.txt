@@ -11,3 +11,7 @@ de 1 o mas end ponits en una sola petición
 HOC (Hight Order Component) 
 Los HOC es una funcion que se le pasa como parametro un componente y devuelve 
 un nuevo componente ya sea con mejoras o con props inyectadas
+
+Render Props
+Es igual a los HOC son funciones que reciben como parametro un componente y retorna
+un nuevo componente ya sea con mejoras o con props inyectadas

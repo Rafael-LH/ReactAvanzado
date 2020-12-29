@@ -1,5 +1,19 @@
-import { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 
-const Context = createContext()
+export const Context = createContext()
 
-export default Context
+export const Provider = ({ children }) => {
+  const [isAuth, setIsAuth] = useState(false)
+
+  const value = {
+    isAuth,
+    activeAuth: () => {
+      setIsAuth(true)
+    }
+  }
+  return (
+    <Context.Provider value={value}>
+      {children}
+    </Context.Provider>
+  )
+}

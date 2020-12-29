@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../Context'
 
-export const NotRegisterUser = () => (
-  <h1>Not Register USer</h1>
-)
+export const NotRegisterUser = () => {
+  const { activeAuth } = useContext(Context)
+  return (
+    <form action="" onSubmit={() => activeAuth()}>
+      <button>Register</button>
+    </form >
+  )
+}

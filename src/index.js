@@ -3,13 +3,13 @@ import { render } from 'react-dom'
 import { App } from '@components/App'
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './config/apolloClient'
-import Context from './Context'
+import { Provider } from './Context'
 
 render(
-  <Context.Provider value={{ isAuth: false }}>
+  <Provider>
     <ApolloProvider client={apolloClient.client}>
       <App />
     </ApolloProvider>
-  </Context.Provider>,
+  </Provider>,
   document.getElementById('app')
 )

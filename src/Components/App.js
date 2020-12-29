@@ -8,7 +8,7 @@ import { User } from '@pages/User'
 import { Login } from '@pages/Login'
 import { Favs } from '@pages/Favs'
 import { Router } from '@reach/router'
-import Context from '../Context'
+import { Context } from '../Context'
 
 export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)

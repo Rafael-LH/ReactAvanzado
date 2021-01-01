@@ -10,6 +10,9 @@ export const Input = styled.input`
   padding: 8px 4px;
   display: block;
   width: 100%;
+  &[disabled]{
+    opacity: .7;
+  }
 `
 export const Button = styled.button`
   background: #8d00ff;
@@ -20,7 +23,13 @@ export const Button = styled.button`
   display: block;
   width: 100%;
   text-align: center;
-  opacity: ${({ loading }) => loading === "true" ? '.5' : '1'};
+  &[disabled]{
+    opacity: .5;
+  }
+  /*
+    Tambien lo podemos hacer por props
+    opacity: ${({ disabled }) => disabled ? '.5' : '1'}; 
+  */
 `
 export const BtnChangeForm = styled.button`
   color: #0d6efd;

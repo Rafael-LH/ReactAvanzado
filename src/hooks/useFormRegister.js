@@ -2,11 +2,18 @@ import { useState, useContext } from 'react'
 import { Context } from '../Context'
 import { useMutation } from '@apollo/client'
 import { registerMutation } from '@gql/registerMutation'
+import { loginMutation } from '@gql/loginMutation'
 
 
-export const useFormRegister = () => {
+export const useFormRegister = ({ isSession }) => {
+
   const { activeAuth } = useContext(Context)
-  const [signup, { loading, error }] = useMutation(registerMutation)
+  const [success, setSuccess] = useState({
+    loading: false,
+    error: false,
+  })
+  const [signup] = useMutation(registerMutation)
+  const [login] = useMutation(loginMutation)
   /**
    * En caso de que tenga en un mismo metodo useQuery y useMutation ambos retornan 
    * loading y error entonces eso ocasionaria un error pero podemos renombrar esos valores de
@@ -25,8 +32,33 @@ export const useFormRegister = () => {
       [e.target.name]: e.target.value
     })
   }
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const getLoginMutation = () => {
+    setSuccess({
+      ...success,
+      loading: true
+    })
+    login({
+      variables: {
+        input: {
+          ...form
+        }
+      }
+    })
+      .then(_ => activeAuth())
+      .catch(err => {
+        console.log(err);
+        setSuccess({
+          ...success,
+          loading: false,
+          error: true,
+        })
+      })
+  }
+  const getRegisterMutation = () => {
+    setSuccess({
+      ...success,
+      loading: true
+    })
     signup({
       variables: {
         input: {
@@ -35,8 +67,18 @@ export const useFormRegister = () => {
       }
     })
       .then(_ => activeAuth())
-      .catch(err => console.log(`Ha ocurrido algun error ${err}`))
-
+      .catch(err => {
+        console.log(err);
+        setSuccess({
+          ...success,
+          loading: false,
+          error: true,
+        })
+      })
   }
-  return { form, handleChange, handleSubmit, loading, error }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    (isSession) ? getLoginMutation() : getRegisterMutation()
+  }
+  return { form, handleChange, handleSubmit, success }
 } 

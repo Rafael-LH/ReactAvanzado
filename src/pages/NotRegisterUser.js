@@ -1,14 +1,19 @@
-import React, { useContext } from 'react'
-import { Context } from '../Context'
+import React from 'react'
 import { UserForm } from '@components/UserForm'
+import { useFormRegister } from '@hooks/useFormRegister'
+import { ErrorContent } from '@components/ErrorContent'
 
 export const NotRegisterUser = () => {
-  const { activeAuth } = useContext(Context)
-
+  const { form, handleChange, handleSubmit, loading, error } = useFormRegister()
   return (
     <>
-      <UserForm title="Registrarse" onSubmit={() => activeAuth()} />
-      <UserForm title="Iniciar sesión" onSubmit={() => activeAuth()} />
+      <UserForm
+        loading={loading}
+        handleChange={handleChange}
+        onSubmit={handleSubmit}
+        form={form}
+      />
+      {error && <ErrorContent message={error.message} />}
     </>
   )
 }

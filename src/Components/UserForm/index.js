@@ -1,17 +1,29 @@
 import React from 'react'
-import { useFormRegister } from '@hooks/useFormRegister'
-import { Form, Input, Button, Title } from './styles'
+import { Form, Input, Button, BtnChangeForm, Title } from './styles'
+import { useConfigForm } from '@hooks/useConfigForm'
 
-export const UserForm = ({ onSubmit, title }) => {
-  const { form, handleChange } = useFormRegister()
+export const UserForm = ({ handleChange, onSubmit, loading, form }) => {
+  const { handleChangeForm, configForm } = useConfigForm()
   return (
     <>
-      <Title>{title}</Title>
+      <Title>{configForm.prevTitle}</Title>
       <Form onSubmit={onSubmit}>
         <Input type="text" name='email' placeholder="Email" value={form.email} onChange={handleChange} />
         <Input type="password" name='password' placeholder="Password" value={form.password} onChange={handleChange} />
-        <Button>{title}</Button>
+        <Button loading={loading.toString()}>
+          {loading
+            ? configForm.nextTitle
+            : configForm.prevTitle}
+        </Button>
       </Form>
+      <BtnChangeForm onClick={handleChangeForm}>
+        <span>
+          {!!configForm.isSession
+            ? '¿ No tienes una cuenta ? '
+            : '¿ Ya tienes uan cuenta ? '}
+        </span>
+        {configForm.titleChangeButton}
+      </BtnChangeForm>
     </>
   )
 }

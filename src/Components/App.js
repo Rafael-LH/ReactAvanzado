@@ -5,7 +5,6 @@ import { Detail } from '@pages/Detail'
 import { Home } from '@pages/Home'
 import { NotRegisterUser } from '@pages/NotRegisterUser'
 import { User } from '@pages/User'
-import { Login } from '@pages/Login'
 import { Favs } from '@pages/Favs'
 import { Router } from '@reach/router'
 import { Context } from '../Context'
@@ -14,7 +13,7 @@ export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)
   // const detailId = urlParams.get('detail')
   const { isAuth } = useContext(Context)
-
+  console.log('session', isAuth);
   return (
     <Layout>
       <GlobalStyle />

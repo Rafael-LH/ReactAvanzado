@@ -6,7 +6,7 @@ import { useConfigForm } from '@hooks/useConfigForm'
 
 export const NotRegisterUser = () => {
   const { handleChangeForm, configForm } = useConfigForm()
-  const { form, handleChange, handleSubmit, success: { loading, error } } = useFormRegister(configForm)
+  const { form, handleChange, handleSubmit, success: { loading, error, message } } = useFormRegister(configForm)
 
   return (
     <>
@@ -18,7 +18,7 @@ export const NotRegisterUser = () => {
         handleChangeForm={handleChangeForm}
         configForm={configForm}
       />
-      {error && <ErrorContent message={'El usuario ya existe o hay algún error'} />}
+      {error && <ErrorContent message={message} />}
     </>
   )
 }

@@ -11,10 +11,12 @@ export const useFormRegister = ({ isSession }) => {
   const [success, setSuccess] = useState({
     loading: false,
     error: false,
+    message: ''
   })
   const [signup] = useMutation(registerMutation)
   const [login] = useMutation(loginMutation)
   /**
+   * const [signup, { loading, error }] = useMutation(registerMutation)
    * En caso de que tenga en un mismo metodo useQuery y useMutation ambos retornan 
    * loading y error entonces eso ocasionaria un error pero podemos renombrar esos valores de
    * la siguiente manera
@@ -33,46 +35,36 @@ export const useFormRegister = ({ isSession }) => {
     })
   }
   const getLoginMutation = () => {
-    setSuccess({
-      ...success,
-      loading: true
-    })
+    setSuccess({ ...success, loading: true })
     login({
       variables: {
-        input: {
-          ...form
-        }
+        input: { ...form }
       }
     })
-      .then(_ => activeAuth())
-      .catch(err => {
-        console.log(err);
+      .then(({ data: { login } }) => activeAuth(login))
+      .catch(_ => {
         setSuccess({
           ...success,
           loading: false,
           error: true,
+          message: 'Los valores son incorrectos'
         })
       })
   }
   const getRegisterMutation = () => {
-    setSuccess({
-      ...success,
-      loading: true
-    })
+    setSuccess({ ...success, loading: true })
     signup({
       variables: {
-        input: {
-          ...form
-        }
+        input: { ...form }
       }
     })
       .then(_ => activeAuth())
-      .catch(err => {
-        console.log(err);
+      .catch(_ => {
         setSuccess({
           ...success,
           loading: false,
           error: true,
+          message: 'El usuario ya existe o hay algún error'
         })
       })
   }

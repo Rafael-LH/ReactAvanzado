@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+export const Section = styled.section`
+  padding: 0px 7px;
+`
 export const ContentLogo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,7 +37,7 @@ export const Li = styled.li`
     cursor: pointer;
     svg{
       vertical-align: middle;
-      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 `

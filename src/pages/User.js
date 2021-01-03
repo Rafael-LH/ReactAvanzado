@@ -1,5 +1,7 @@
 import React from 'react'
 
-export const User = () => (
-  <h1>User</h1>
-)
+export const User = () => {
+  return (
+    <h1>User</h1>
+  )
+}

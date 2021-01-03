@@ -15,7 +15,9 @@ module.exports = (_, argv) => {
         '@components': path.resolve(__dirname, './src/Components'),
         '@hooks': path.resolve(__dirname, './src/hooks'),
         '@gql': path.resolve(__dirname, './src/gql'),
-        '@pages': path.resolve(__dirname, './src/pages')
+        '@pages': path.resolve(__dirname, './src/pages'),
+        '@container': path.resolve(__dirname, './src/Container'),
+        '@RP': path.resolve(__dirname, './src/RP')
       }
     },
     devtool: argv.mode === 'development' ? 'source-map' : '',

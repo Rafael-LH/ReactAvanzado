@@ -6,8 +6,9 @@ import { Home } from '@pages/Home'
 import { NotRegisterUser } from '@pages/NotRegisterUser'
 import { User } from '@pages/User'
 import { Favs } from '@pages/Favs'
-import { Router } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 import { Context } from '../Context'
+import { NotFound } from './Error/404'
 
 export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)
@@ -17,23 +18,17 @@ export const App = () => {
     <Layout>
       <GlobalStyle />
       <Router>
+        <NotFound default />
         <Home path='/' />
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
+        {!isAuth && <NotRegisterUser path='/login' />}
+        {!isAuth && <Redirect noThrow from='/favs' to='/login' />}
+        {!isAuth && <Redirect noThrow from='/user' to='/login' />}
+        {isAuth && <Redirect noThrow from='/login' to='/' />}
+        <Favs path='/favs' />
+        <User path='/user' />
       </Router>
-      {
-        isAuth
-          ?
-          <Router>
-            <Favs path='/favs' />
-            <User path='/user' />
-          </Router>
-          :
-          <Router>
-            <NotRegisterUser path='/favs' />
-            <NotRegisterUser path='/user' />
-          </Router>
-      }
     </Layout>
   )
 }

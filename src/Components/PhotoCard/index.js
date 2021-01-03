@@ -6,31 +6,25 @@ import { ImgWrapper, Img, Article } from './styles'
 import { FavButton } from "@components/FavButton"
 //Hooks
 import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
-import { useLocalStorage } from "@hooks/useLocalStorage";
 import { useLikePhoto } from "@hooks/useLikePhoto";
 
-export const PhotoCard = ({ id, likes, src }) => {
+export const PhotoCard = ({ id, liked, likes, src }) => {
   /**
    * Hooks
    */
-  const { likeAnonymousPhoto } = useLikePhoto()
+  const { likePhoto } = useLikePhoto()
   const { show, DOMRef } = useIntersectionObserver()
-  /**
-   * States
-   */
-  const [liked, setLiked] = useLocalStorage(`like-${id}`, likes)
   /**
    * Handles
    */
   const handleFavClick = () => {
-    !liked && likeAnonymousPhoto({
+    likePhoto({
       variables: {
         input: {
           id,
         }
       }
     })
-    setLiked(!liked)
   }
 
   return (

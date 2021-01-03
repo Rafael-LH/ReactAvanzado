@@ -41,7 +41,9 @@ export const useFormRegister = ({ isSession }) => {
         input: { ...form }
       }
     })
-      .then(({ data: { login } }) => activeAuth(login))
+      .then(({ data: { login } }) => {
+        activeAuth(login)
+      })
       .catch(_ => {
         setSuccess({
           ...success,
@@ -58,7 +60,9 @@ export const useFormRegister = ({ isSession }) => {
         input: { ...form }
       }
     })
-      .then(_ => activeAuth())
+      .then(({ data: { login } }) => {
+        activeAuth(login)
+      })
       .catch(_ => {
         setSuccess({
           ...success,

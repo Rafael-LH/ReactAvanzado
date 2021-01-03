@@ -13,7 +13,6 @@ export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)
   // const detailId = urlParams.get('detail')
   const { isAuth } = useContext(Context)
-  console.log('session', isAuth);
   return (
     <Layout>
       <GlobalStyle />

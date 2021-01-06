@@ -2,7 +2,7 @@ import React from 'react'
 import { FavsWithQuery } from '@container/FavsWithQuery'
 import { LayoutHelmet } from '@components/LayoutHelmet'
 
-export const Favs = () => (
+const Favs = () => (
   <>
     <LayoutHelmet
       title='Tus favoritos'
@@ -11,3 +11,4 @@ export const Favs = () => (
     <FavsWithQuery />
   </>
 )
+export default Favs

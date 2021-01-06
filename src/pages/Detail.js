@@ -2,7 +2,7 @@ import React from 'react'
 import { PhotoCardWithQuery } from '../Container/PhotoCardWithQuery'
 import { LayoutHelmet } from '@components/LayoutHelmet'
 
-export const Detail = ({ detailId }) => (
+const Detail = ({ detailId }) => (
   <>
     <LayoutHelmet
       title={`Fotografía - ${detailId}`}
@@ -10,3 +10,4 @@ export const Detail = ({ detailId }) => (
     <PhotoCardWithQuery detailId={detailId} />
   </>
 )
+export default Detail

@@ -4,7 +4,7 @@ import { useFormRegister } from '@hooks/useFormRegister'
 import { ErrorContent } from '@components/ErrorContent'
 import { useConfigForm } from '@hooks/useConfigForm'
 
-export const NotRegisterUser = () => {
+const NotRegisterUser = () => {
   const { handleChangeForm, configForm } = useConfigForm()
   const { form, handleChange, handleSubmit, success: { loading, error, message } } = useFormRegister(configForm)
 
@@ -22,3 +22,4 @@ export const NotRegisterUser = () => {
     </>
   )
 }
+export default NotRegisterUser

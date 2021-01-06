@@ -4,6 +4,7 @@ import { NavBar } from '@components/NavBar'
 import { Context } from '../../Context'
 import { Section, ContentLogo, Ul, Input, Li } from './styles'
 import { MdPerson } from "react-icons/md";
+import PropTypes from 'react'
 
 export const Layout = ({ children }) => {
   const SIZE = '23px'
@@ -36,3 +37,10 @@ export const Layout = ({ children }) => {
     </Section>
   )
 }
+/**
+ * con el valor de node lo que le estamos indicando es que tiene que recibir
+ * cualquier cosa que react puede renderizar un objeto, array, strings, componentes etc.
+ */
+// Layout.propTypes = {
+//   children: PropTypes.node
+// }

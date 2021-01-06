@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from '@reach/router'
+import PropTypes from 'prop-types'
 // Styles
 import { ImgWrapper, Img, Article } from './styles'
 //Components
@@ -47,3 +48,20 @@ export const PhotoCard = ({ id, liked, likes, src }) => {
     </Article>
   )
 }
+
+PhotoCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired,
+  //custom PropType 
+  likes: function (props, propName, componentName) { // son los tres valores que recibe un custom propType
+    const propsValue = props[propName]
+    if (propsValue === 'undefined') {
+      return new Error(`${propName} value must be defined`)
+    }
+    if (propsValue < 0) {
+      return new Error(`${propName} vale must be greater than 0`)
+    }
+  }
+}
+// Los errores de los PropTypes solo se ejecutan en desarrollo no en produccion

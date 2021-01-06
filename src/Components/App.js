@@ -1,14 +1,8 @@
 import React, { useContext, Suspense } from 'react'
 import { GlobalStyle } from '../styles/GlobalStyles'
 import { Layout } from '@components/Layout'
-import { Detail } from '@pages/Detail'
-import { Home } from '@pages/Home'
-import { NotRegisterUser } from '@pages/NotRegisterUser'
-import { User } from '@pages/User'
-// import { Favs } from '@pages/Favs'
 import { Router, Redirect } from '@reach/router'
 import { Context } from '../Context'
-import { NotFound } from './Error/404'
 
 /**
  * Lo que hacemos con React.lazy es no mostrar un componente si no lo necesitamos
@@ -20,7 +14,15 @@ import { NotFound } from './Error/404'
  * manera nombrada porque si no nuestro import dinamico no funcionara
  */
 
+/**
+ * Lazy
+ */
 const Favs = React.lazy(() => import('@pages/Favs'))
+const Detail = React.lazy(() => import('@pages/Detail'))
+const Home = React.lazy(() => import('@pages/Home'))
+const NotRegisterUser = React.lazy(() => import('@pages/NotRegisterUser'))
+const User = React.lazy(() => import('@pages/User'))
+const NotFound = React.lazy(() => import('@components/Error/404'))
 
 export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)

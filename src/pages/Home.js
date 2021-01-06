@@ -21,6 +21,7 @@ const HomePage = ({ id }) => (
  * pasando bien las props pues esto provocara que nunca se renderiza nuestro 
  * componente Home
  */
-export const Home = React.memo(HomePage, (prevProps, props) => {
+const Home = React.memo(HomePage, (prevProps, props) => {
   return prevProps.id === props.id
 })
+export default Home

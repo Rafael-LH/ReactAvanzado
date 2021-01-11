@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = (_, argv) => {
   console.log(argv.mode)
@@ -60,6 +61,24 @@ module.exports = (_, argv) => {
           }
         ]
       }),
+      new WorkboxWebpackPlugin.GenerateSW({
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp('https://res.cloudunary.com|images.unsplasj.com'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images'
+            }
+          },
+          {
+            urlPattern: new RegExp('https://petgram-server-lh.rafael-lh.vercel.app/graphql'),
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api'
+            }
+          },
+        ]
+      })
     ]
   }
 }

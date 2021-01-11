@@ -25,3 +25,8 @@ Payload: La información que almacenamos en el token.
 Verify Signature: Una encriptación del header más el payload más tu llave secreta.
 Para utilizar nuestro JWT necesitamos añadirlo al header authorization de las peticiones 
 HTTP que hagamos con el texto Bearer [token].
+
+Service Worker:
+Permite la creación de experiencias offline efectivas, interceptando peticiones de red y realizando
+la acción apropiada si la conexión de red está disponible y hay disponibles contenidos actualizados en el servidor.
+También permitirán el acceso a notificaciones tipo push y APIs de  sincronización en segundo plano.

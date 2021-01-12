@@ -24,7 +24,7 @@ module.exports = (_, argv) => {
     },
     devtool: argv.mode === 'development' ? 'source-map' : '',
     devServer: {
-      port: 3000,
+      port: 8080,
       historyApiFallback: true
     },
     module: {
@@ -42,7 +42,7 @@ module.exports = (_, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public/index.html'),
+        template: './src/index.html',
         filename: 'index.html'
       }),
       new WebpackPwaManifestPlugin({

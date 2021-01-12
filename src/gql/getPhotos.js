@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 export const getPhotos = gql`
   query getPhotos($categoryId: ID) {
     photos(categoryId: $categoryId){

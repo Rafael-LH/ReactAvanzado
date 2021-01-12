@@ -11,4 +11,3 @@ export const ListOfPhotoCardsComponent = ({ photos }) => {
     </Ul>
   )
 }
-

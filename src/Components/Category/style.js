@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link as LinkRouter } from '@reach/router'
 
 /**
- * Styled component puede recibir un parametro y ese parametro puede ser 
+ * Styled component puede recibir un parametro y ese parametro puede ser
  * un componente pero no cualquier componente si no un componente
  * que pueda tener una propiedad className y Link si que puede aceptar esa prop
  */
@@ -22,4 +22,4 @@ export const Image = styled.img`
   object-fit: cover;
   height: 75px;
   width: 75px;
-` 
+`

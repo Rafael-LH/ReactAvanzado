@@ -14,7 +14,7 @@ const ListOfCategoriesComponent = () => {
         laoder
           ? <center><h1>Cargando...</h1></center>
           : categories.map(item => (
-            <Item key={item.id} >
+            <Item key={item.id}>
               <Category {...item} path={`/pet/${item.id}`} />
             </Item>
           ))
@@ -27,7 +27,7 @@ const ListOfCategoriesComponent = () => {
       const newShowFixed = window.scrollY > 200
       showFixed !== newShowFixed && setShowFixed(newShowFixed)
     }
-    document.addEventListener("scroll", onScroll)
+    document.addEventListener('scroll', onScroll)
     return () => document.removeEventListener('scroll', onScroll)
   }, [showFixed])
 

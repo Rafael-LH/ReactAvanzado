@@ -3,11 +3,11 @@ import { Link } from '@reach/router'
 import PropTypes from 'prop-types'
 // Styles
 import { ImgWrapper, Img, Article } from './styles'
-//Components
-import { FavButton } from "@components/FavButton"
-//Hooks
-import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
-import { useLikePhoto } from "@hooks/useLikePhoto";
+// Components
+import { FavButton } from '@components/FavButton'
+// Hooks
+import { useIntersectionObserver } from '@hooks/useIntersectionObserver'
+import { useLikePhoto } from '@hooks/useLikePhoto'
 
 export const PhotoCard = ({ id, liked, likes, src }) => {
   /**
@@ -22,7 +22,7 @@ export const PhotoCard = ({ id, liked, likes, src }) => {
     likePhoto({
       variables: {
         input: {
-          id,
+          id
         }
       }
     })
@@ -32,18 +32,18 @@ export const PhotoCard = ({ id, liked, likes, src }) => {
     <Article ref={DOMRef}>
       {
         show &&
-        <>
-          <Link to={`/detail/${id}`}>
-            <ImgWrapper>
-              <Img src={src} alt="image" />
-            </ImgWrapper>
-          </Link>
-          <FavButton
-            liked={liked}
-            likes={likes}
-            handleFavClick={handleFavClick}
-          />
-        </>
+          <>
+            <Link to={`/detail/${id}`}>
+              <ImgWrapper>
+                <Img src={src} alt='image' />
+              </ImgWrapper>
+            </Link>
+            <FavButton
+              liked={liked}
+              likes={likes}
+              handleFavClick={handleFavClick}
+            />
+          </>
       }
     </Article>
   )
@@ -53,7 +53,7 @@ PhotoCard.propTypes = {
   id: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
-  //custom PropType 
+  // custom PropType
   likes: function (props, propName, componentName) { // son los tres valores que recibe un custom propType
     const propsValue = props[propName]
     if (propsValue === 'undefined') {

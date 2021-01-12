@@ -7,19 +7,21 @@ export const UserForm = ({ handleChange, onSubmit, loading, form, handleChangeFo
       <Title>{configForm.prevTitle}</Title>
       <Form onSubmit={onSubmit}>
         <Input
-          type="text"
+          type='text'
           name='email'
-          placeholder="Email"
+          placeholder='Email'
           value={form.email}
           onChange={handleChange}
-          disabled={loading} />
+          disabled={loading}
+        />
         <Input
-          type="password"
+          type='password'
           name='password'
-          placeholder="Password"
+          placeholder='Password'
           value={form.password}
           onChange={handleChange}
-          disabled={loading} />
+          disabled={loading}
+        />
         <Button disabled={loading}>
           {loading
             ? configForm.nextTitle
@@ -28,7 +30,7 @@ export const UserForm = ({ handleChange, onSubmit, loading, form, handleChangeFo
       </Form>
       <BtnChangeForm onClick={handleChangeForm}>
         <span>
-          {!!configForm.isSession
+          {configForm.isSession
             ? '¿ No tienes una cuenta ? '
             : '¿ Ya tienes una cuenta ? '}
         </span>

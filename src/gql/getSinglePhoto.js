@@ -9,4 +9,4 @@ export const getSinglePhoto = gql`
     liked
    }
   }
-` 
+`

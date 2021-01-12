@@ -37,4 +37,4 @@ export const StyledSpinner = styled.svg`
     stroke-linecap: round;
     animation: ${dash} 1.5s ease-in-out infinite;
   }
-`;
+`

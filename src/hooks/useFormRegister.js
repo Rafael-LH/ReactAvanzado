@@ -4,9 +4,7 @@ import { useMutation } from '@apollo/client'
 import { registerMutation } from '@gql/registerMutation'
 import { loginMutation } from '@gql/loginMutation'
 
-
 export const useFormRegister = ({ isSession }) => {
-
   const { activeAuth } = useContext(Context)
   const [success, setSuccess] = useState({
     loading: false,
@@ -17,7 +15,7 @@ export const useFormRegister = ({ isSession }) => {
   const [login] = useMutation(loginMutation)
   /**
    * const [signup, { loading, error }] = useMutation(registerMutation)
-   * En caso de que tenga en un mismo metodo useQuery y useMutation ambos retornan 
+   * En caso de que tenga en un mismo metodo useQuery y useMutation ambos retornan
    * loading y error entonces eso ocasionaria un error pero podemos renombrar esos valores de
    * la siguiente manera
    * const [signup, { loading: mutationLoading, error: mutationError }] = useMutation(registerMutation)
@@ -77,4 +75,4 @@ export const useFormRegister = ({ isSession }) => {
     (isSession) ? getLoginMutation() : getRegisterMutation()
   }
   return { form, handleChange, handleSubmit, success }
-} 
+}

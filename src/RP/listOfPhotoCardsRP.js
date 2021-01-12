@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client'
 import { getPhotos } from '../gql/getPhotos'
 import { Spinner } from '../Components/Spinner'
 

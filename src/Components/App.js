@@ -7,10 +7,10 @@ import { Context } from '../Context'
 /**
  * Lo que hacemos con React.lazy es no mostrar un componente si no lo necesitamos
  * de manera que solo se va a renderear cuando lo necesitemos
- * para utilizar lazy de React debemos de llamar a Suspense (react) y Suspense 
+ * para utilizar lazy de React debemos de llamar a Suspense (react) y Suspense
  * recibe como parametro un fallback que sera lo que rendeara cuando nuestro
  * componente este suspendido, en este caso mandamos solo un div
- * Otro punto importante es exportar nuestro componente por defecto y no de 
+ * Otro punto importante es exportar nuestro componente por defecto y no de
  * manera nombrada porque si no nuestro import dinamico no funcionara
  */
 

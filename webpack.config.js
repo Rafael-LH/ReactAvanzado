@@ -56,8 +56,8 @@ module.exports = (_, argv) => {
             src: path.resolve('src/assets/icon.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('icons'),
-            purpose: "any maskable",
-            ios: true,
+            purpose: 'any maskable',
+            ios: true
           }
         ]
       }),
@@ -76,7 +76,7 @@ module.exports = (_, argv) => {
             options: {
               cacheName: 'api'
             }
-          },
+          }
         ]
       })
     ]

@@ -3,7 +3,7 @@ import { Logo } from '@components/Logo'
 import { NavBar } from '@components/NavBar'
 import { Context } from '../../Context'
 import { Section, ContentLogo, Ul, Input, Li } from './styles'
-import { MdPerson } from "react-icons/md";
+import { MdPerson } from 'react-icons/md'
 import PropTypes from 'react'
 
 export const Layout = ({ children }) => {
@@ -16,20 +16,20 @@ export const Layout = ({ children }) => {
         <Logo />
         {
           isAuth &&
-          <Ul>
-            <Li>
-              <Input type="checkbox" id='user' />
-              <label htmlFor="user">
-                <MdPerson size={SIZE} />
-                User
-              </label>
-              <ul>
-                <li>
-                  <button onClick={() => removeAuth()}>Cerrar sesión</button>
-                </li>
-              </ul>
-            </Li>
-          </Ul>
+            <Ul>
+              <Li>
+                <Input type='checkbox' id='user' />
+                <label htmlFor='user'>
+                  <MdPerson size={SIZE} />
+                  User
+                </label>
+                <ul>
+                  <li>
+                    <button onClick={() => removeAuth()}>Cerrar sesión</button>
+                  </li>
+                </ul>
+              </Li>
+            </Ul>
         }
       </ContentLogo>
       {children}

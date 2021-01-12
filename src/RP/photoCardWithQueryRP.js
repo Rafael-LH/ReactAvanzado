@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { getSinglePhoto } from "@gql/getSinglePhoto"
+import { getSinglePhoto } from '@gql/getSinglePhoto'
 
 export const photoCardWithQueryRP = (PhotoCard) => {
   const PhotoCardWithQueryNC = ({ detailId }) => {

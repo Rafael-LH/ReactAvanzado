@@ -3,8 +3,8 @@
   "alias": "petgram",
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/static-build",
+      "src": "package.json"
     }
   ],
   "routes": [

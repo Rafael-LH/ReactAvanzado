@@ -4,7 +4,7 @@
   "description": "Webpack, ReactJS",
   "main": "webpack.config.js",
   "scripts": {
-    "vercel:build": "npm run build",
+    "vercel-build": "npm run build",
     "build": "webpack -w --mode production ",
     "develop": "webpack-dev-server  --mode development",
     "dev": "webpack-dev-server  --mode development && npx serve dist -s",
